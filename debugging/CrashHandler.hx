@@ -23,7 +23,7 @@ using StringTools;
 **/
 class CrashHandler
 {
-	public static var REPORT_PAGE:String = 'https://github.com/::github-user::/::github-repo::/issues';
+	public static var REPORT_PAGE:String = 'https://github.com/::github_user::/::github_repo::/issues';
 	public static var FILE_LOCATION:String = 'crash';
 
 	public static var FILE_PREFIX:String = 'Crash_';
@@ -46,8 +46,8 @@ class CrashHandler
 			FILE_LOCATION = new_file_location;
 
 		REPORT_PAGE = new Template(REPORT_PAGE).execute({
-			'github-user': GITHUB_USER,
-			'github-repo': GITHUB_REPO,
+			'github_user': GITHUB_USER,
+			'github_repo': GITHUB_REPO,
 		});
 
 		#if CRASH_HANDLER
