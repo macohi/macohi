@@ -24,4 +24,4 @@ Just fukin download the zip and drop it in your haxeflixel project lol
 
 ## I'm getting errors about missing classes!
 
-If you're just editing this manually to add your own shit and it's not detecting your haxelib shit thats cause this isn't a proper haxeflixel project and your not in one probably so run `.\install.bat` and it'll be fine.
+If you're just editing this manually to add your own shit and it's not detecting your haxelib shit thats cause this isn't a proper haxeflixel project and your not in one probably so run `.\install.bat` and it'll be fine cause you have the libs and theres `main.hxml` which tells whatever ur using "use these libs bruv"
