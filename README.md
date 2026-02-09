@@ -6,6 +6,8 @@ Bunch o shit I'll prob use in multiple projects
 
 Add this : `git submodule add https://github.com/sphis-sinco/macohi`
 
+Put it in source : `git submodule set-url -- "source/macohi/" https://github.com/sphis-sinco/macohi`
+
 Update : `git submodule update --init --recursive`
 
 ## Other ways of using
