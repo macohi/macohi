@@ -1,11 +1,5 @@
 package macohi.funkin.pre_vslice;
 
-/**
-	FNF 0.2.8 SwagSection
-
-	_Last edit date_: 2026-02-09
-	@since 2026-02-09
-**/
 typedef SwagSection =
 {
 	var sectionNotes:Array<Dynamic>;

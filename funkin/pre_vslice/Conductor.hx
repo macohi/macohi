@@ -1,11 +1,5 @@
 package macohi.funkin.pre_vslice;
 
-/**
-	FNF 0.2.8 Conductor
-
-	_Last edit date_: 2026-02-09
-	@since 2026-02-09
-**/
 class Conductor
 {
 	public static var bpm:Float = 100;

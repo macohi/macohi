@@ -5,8 +5,5 @@ import flixel.FlxSprite;
 /**
 	Override of `flixel.FlxSprite` to apply
 	custom functionality to it.
-
-	_Last edit date_: 2026-02-09
-	@since 2026-02-09
 **/
 class MSprite extends FlxSprite {}

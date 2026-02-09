@@ -2,12 +2,6 @@ package macohi.funkin.koya.backend;
 
 import lime.utils.Assets;
 
-/**
-	Funkin Koya KoyaAsset
-
-	_Last edit date_: 2026-02-09
-	@since 2026-02-09
-**/
 class KoyaAssets
 {
 	public static function exists(path:String):Bool

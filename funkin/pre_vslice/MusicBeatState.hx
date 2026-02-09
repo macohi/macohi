@@ -6,9 +6,6 @@ import flixel.addons.ui.FlxUIState;
 	FNF 0.2.8 MusicBeatState
 	
 	`controls` removed
-
-	_Last edit date_: 2026-02-09
-	@since 2026-02-09
 **/
 class MusicBeatState extends FlxUIState
 {
