@@ -34,6 +34,28 @@ So yuh
 
 # Other shit
 
+## General Project Recommendation
+
+This speeds up compilin
+
+```xml
+<haxeflag name="--dce full" if="release"/>
+```
+
 ## I'm getting errors about missing classes!
 
 If you're just editing this manually to add your own shit and it's not detecting your haxelib shit thats cause this isn't a proper haxeflixel project and your not in one probably so run `.\install.bat` and it'll be fine cause you have the libs and theres `main.hxml` which tells whatever ur using "use these libs bruv"
+
+# Things
+
+## Crash handler
+
+Add this to your Project so the crash handler works
+
+```xml
+<define name="CRASH_HANDLER" if="desktop" />
+
+<haxedef name="HXCPP_CHECK_POINTER" if="CRASH_HANDLER" />
+<haxedef name="HXCPP_STACK_LINE" if="CRASH_HANDLER" />
+<haxedef name="HXCPP_STACK_TRACE" if="CRASH_HANDLER" />
+```
