@@ -6,6 +6,18 @@ using StringTools;
 
 class StringUtil
 {
+	/**
+	 * Checks if a string is `null` or blank (contains only whitespaces).
+	 * Yoinked from an FNF pr heheheehehehee
+	 *
+	 * @param value The string to check.
+	 * @return True... or False...
+	 */
+	public static function isBlank(value:String):Bool
+	{
+		return value == null || value.trim().length == 0;
+	}
+
 	public static function splitStringByNewlines(str:String):Array<String>
 	{
 		if (str == null)
