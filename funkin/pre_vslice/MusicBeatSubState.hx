@@ -3,7 +3,7 @@ package macohi.funkin.pre_vslice;
 import flixel.FlxSubState;
 
 /**
-	FNF 0.2.8 MusicBeatState
+	FNF 0.2.8 MusicBeatSubstate
 	
 	`controls` removed
 **/
