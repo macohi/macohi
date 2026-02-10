@@ -2,6 +2,8 @@ package macohi.util;
 
 import macohi.funkin.koya.backend.KoyaAssets;
 
+using StringTools;
+
 class StringUtil
 {
 	public static function splitStringByNewlines(str:String):Array<String>
@@ -9,7 +11,12 @@ class StringUtil
 		if (str == null)
 			return [];
 
-		return str.split('\n');
+		var strA:Array<String> = [];
+
+		for (entry in str.split('\n'))
+			strA.push(entry.trim());
+
+		return strA;
 	}
 
 	public static function splitTextAssetByNewlines(txt:String)

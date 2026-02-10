@@ -8,9 +8,10 @@ class ArrayUtil
 	{
 		var flxKeyA:Array<FlxKey> = [];
 
-		for (str in strA)
-			if (str != null)
-				flxKeyA.push(FlxKey.fromString(str));
+		if (strA != null)
+			for (str in strA)
+				if (str != null)
+					flxKeyA.push(FlxKey.fromString(str));
 
 		return flxKeyA;
 	}
