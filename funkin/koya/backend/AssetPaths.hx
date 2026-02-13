@@ -38,14 +38,14 @@ class AssetPaths
 
 	public static function getPath(path:String, ?library:String):String
 	{
-		if (library != null)
+		if (!library.isBlank())
 			return getLibraryPath(path, library);
-		else if (currentLevel != null)
+		else if (!currentLevel.isBlank())
 			return getLibraryPath(path, currentLevel);
 
 		#if MOD_SUPPORT
 		var modReturn = getPathMod(path, library);
-		if (modReturn != null)
+		if (!modReturn.isBlank())
 			return modReturn;
 		#end
 
