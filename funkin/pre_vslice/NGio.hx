@@ -15,6 +15,7 @@ import lime.app.Application;
 import openfl.display.Stage;
 
 using StringTools;
+using macohi.util.StringUtil;
 
 /**
  * MADE BY GEOKURELI THE LEGENED GOD HERO MVP
@@ -48,7 +49,8 @@ class NGio
 		// HIDE APP ID SHITS
 		NG.core.verbose = #if debug true #else false #end;
 		// Set the encryption cipher/format to RC4/Base64. AES128 and Hex are not implemented yet
-		NG.core.setupEncryption(encKey); // Found in you NG project view
+		if (!encKey.isBlank())
+			NG.core.setupEncryption(encKey); // Found in you NG project view
 
 		trace(NG.core.attemptingLogin);
 

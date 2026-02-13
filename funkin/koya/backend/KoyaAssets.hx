@@ -7,7 +7,7 @@ class KoyaAssets
 	public static function exists(path:String):Bool
 	{
 		#if sys
-		return sys.FileSystem.exists(path);
+		return Assets.exists(path) || sys.FileSystem.exists(path);
 		#end
 
 		return Assets.exists(path);
@@ -15,11 +15,15 @@ class KoyaAssets
 
 	public static function getText(path:String):String
 	{
+		var lime = Assets.getText(path);
+
 		#if sys
-		return sys.io.File.getContent(path);
+		var sys = sys.io.File.getContent(path);
+
+		return (sys == null) ? lime : sys;
 		#end
 
-		return Assets.getText(path);
+		return lime;
 	}
 
 	public static function readDirectory(path:String):Array<String>
