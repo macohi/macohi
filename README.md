@@ -67,3 +67,9 @@ Add this to your Project so the crash handler works
 ## Newgrounds
 
 Build your game with `-DENABLE_NEWGROUNDS` for newgrounds shit
+
+Or you can add this:
+```xml
+<define name="ENABLE_NEWGROUNDS"/>
+```
+and compile to html5
