@@ -16,8 +16,8 @@ class MenuBG extends FunkinSprite
 	public dynamic function reloadBG(pink:Bool = false)
 	{
 		if (pink)
-			loadGraphic(AssetPaths.image('bg_pink', lib));
+			loadGraphic(MegaVars.KOYA_MENUBG_PINK(lib));
 		else
-			loadGraphic(AssetPaths.image('bg_desat', lib));
+			loadGraphic(MegaVars.KOYA_MENUBG_DESAT(lib));
 	}
 }
