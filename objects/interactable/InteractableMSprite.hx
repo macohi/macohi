@@ -1,7 +1,7 @@
 package macohi.objects.interactable;
 
-import flixel.FlxG;
 import flixel.util.FlxSignal;
+import flixel.FlxG;
 import macohi.overrides.MSprite;
 
 class InteractableMSprite extends MSprite

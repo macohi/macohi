@@ -48,6 +48,13 @@ class CrashHandler
 			'github_repo': GITHUB_REPO,
 		});
 
+		trace('Initalized CrashHandler');
+		trace(' * FILE_PREFIX\t: $FILE_PREFIX');
+		trace(' * REPORT_PAGE\t: $REPORT_PAGE');
+		trace(' * GITHUB_USER\t: $GITHUB_USER');
+		trace(' * GITHUB_REPO\t: $GITHUB_REPO');
+		trace(' * FILE_LOCATION\t: $FILE_LOCATION');
+
 		#if CRASH_HANDLER
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 		#end

@@ -7,30 +7,46 @@ using StringTools;
 
 class CustomTrace
 {
-	public static var formatOptions:Map<String, Dynamic->String> = [
-		'<warning>' => function(v)
+	public static var formatWordOptions:Map<String, (String, String) -> String> = [
+		'<warning>' => function(key:String, v:String)
 		{
-			return v.replace('<warning>', 'WARNING'.bg_bright_yellow());
+			return v?.replace(key, ' WARNING '.warning());
 		},
-		'<error>' => function(v)
+		'<error>' => function(key:String, v:String)
 		{
-			return v.replace('<error>', 'ERROR'.bg_bright_red());
+			return v?.replace(key, ' ERROR '.error());
+		},
+		'<reset>' => function(key:String, v:String)
+		{
+			return v?.replace(key, AnsiCode.RESET);
 		},
 	];
 
 	public static function formatOutput(v:Dynamic, ?pos:PosInfos):String
 	{
 		var nv:String = Std.string(v);
+
+		if (nv == null)
+			nv = '<error> null input';
+
 		var posInfos:String = '';
 
 		if (pos != null)
-			posInfos += '${pos.className}:${pos.lineNumber}'.bg_bright_blue() + ' ';
+		{
+			posInfos += '${pos.fileName}:${pos.lineNumber} ';
 
-		nv = '$posInfos$nv';
+			nv = ' : $nv';
+		}
 
-		for (key => value in formatOptions)
-			if (nv.contains(key))
-				nv = value(key);
+		nv = '${posInfos.bold()}${nv.bold()}';
+
+		if (nv != null)
+		{
+			for (key => value in formatWordOptions)
+				if (nv.contains(key))
+					if (value != null)
+						nv = value(key, nv);
+		}
 
 		return nv;
 	}
