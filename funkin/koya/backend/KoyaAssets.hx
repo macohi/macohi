@@ -18,7 +18,7 @@ class KoyaAssets
 		var lime = Assets.getText(path);
 
 		#if sys
-		var sys = sys.io.File.getContent(path);
+		var sys = (sys.FileSystem.exists(path)) ? sys.io.File.getContent(path) : null;
 
 		return (sys == null) ? lime : sys;
 		#end
