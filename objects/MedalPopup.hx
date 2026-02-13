@@ -31,13 +31,13 @@ class MedalPopup extends FlxBasic
 		});
 
 		FlxG.sound.play(AssetPaths.sound('medalpopup', 'medals'));
+	}
 
-		if (!FlxG.state.members.contains(medal))
-			FlxG.state.add(medal);
-		else
-		{
-			FlxG.state.remove(medal);
-			FlxG.state.add(medal); // stay at the front
-		}
+	override function draw()
+	{
+		super.draw();
+
+		if (medal != null && medal.alpha > 0)
+			medal.draw();
 	}
 }
