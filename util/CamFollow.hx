@@ -10,6 +10,7 @@ class CamFollow extends FlxObject
 	{
 		super(0, 0, FlxG.width, FlxG.height);
 
+		setX(0);
 		setY(0);
 
 		FlxG.camera.follow(this, style ?? LOCKON, lerp);
@@ -18,5 +19,10 @@ class CamFollow extends FlxObject
 	public function setY(newY:Float)
 	{
 		this.y = newY - FlxG.height / 2;
+	}
+
+	public function setX(newX:Float)
+	{
+		this.x = newX - FlxG.width / 2;
 	}
 }
