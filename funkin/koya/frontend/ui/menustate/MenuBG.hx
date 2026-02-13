@@ -1,6 +1,6 @@
 package macohi.funkin.koya.frontend.ui.menustate;
 
-import macohi.funkin.koya.backend.AssetPaths;
+using macohi.util.StringUtil;
 
 class MenuBG extends FunkinSprite
 {
@@ -16,8 +16,11 @@ class MenuBG extends FunkinSprite
 	public dynamic function reloadBG(pink:Bool = false)
 	{
 		if (pink)
-			loadGraphic(MegaVars.KOYA_MENUBG_PINK(lib));
-		else
+		{
+			if (!MegaVars.KOYA_MENUBG_PINK(lib).isBlank())
+				loadGraphic(MegaVars.KOYA_MENUBG_PINK(lib));
+		}
+		else if (!MegaVars.KOYA_MENUBG_DESAT(lib).isBlank())
 			loadGraphic(MegaVars.KOYA_MENUBG_DESAT(lib));
 	}
 }

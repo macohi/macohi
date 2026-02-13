@@ -13,6 +13,7 @@ import flixel.FlxG;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
 using StringTools;
+using macohi.util.StringUtil;
 
 enum MenuType
 {
@@ -288,7 +289,7 @@ class MenuState extends MusicBeatState
 			}
 
 		if (change != 0)
-			if (MegaVars.SOUND_MENU_SCROLL != null)
+			if (!MegaVars.SOUND_MENU_SCROLL.isBlank())
 				FlxG.sound.play(MegaVars.SOUND_MENU_SCROLL);
 	}
 
@@ -302,7 +303,7 @@ class MenuState extends MusicBeatState
 		transitioning = true;
 
 		var confirmMenu = new FlxSound();
-		if (MegaVars.SOUND_MENU_CONFIRM != null)
+		if (!MegaVars.SOUND_MENU_CONFIRM.isBlank())
 			confirmMenu.loadEmbedded(MegaVars.SOUND_MENU_CONFIRM);
 
 		confirmMenu.play();
