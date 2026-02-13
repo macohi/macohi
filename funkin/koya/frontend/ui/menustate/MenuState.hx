@@ -74,6 +74,9 @@ class MenuState extends MusicBeatState
 		add(itemsFlxTextGroup);
 
 		reloadMenuItems();
+
+		pinkBG.reloadBG();
+		flashBG.reloadBG();
 	}
 
 	public function reloadMenuItems()
