@@ -174,7 +174,7 @@ class NGio
 			// NGio.scoreboardArray = NG.core.scoreBoards.get(15064).scores;
 		}
 
-		inline static public function logEvent(event:String)
+		inline public function logEvent(event:String)
 		{
 			NG.core.calls.event.logEvent(event).send();
 			trace('should have logged: ' + event);
