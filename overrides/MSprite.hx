@@ -10,9 +10,19 @@ import animate.FlxAnimate;
 **/
 class MSprite extends FlxAnimate
 {
-	public var brightness(default, set):Float = 0.0;
-	
-	function set_brightness(newbright:Float):Float {
+	/**
+		Recommended not to check for or modify this
+		if you're editing the `colorTransform._Multiplier` (red, green or blue) variables
+	**/
+	public var brightness(get, set):Float;
+
+	function get_brightness():Float
+	{
+		return colorTransform.redMultiplier - 1.0;
+	}
+
+	function set_brightness(newbright:Float):Float
+	{
 		trace('setting colorTransform: (r: ${colorTransform.redMultiplier}, g: ${colorTransform.greenMultiplier}, b: ${colorTransform.blueMultiplier})');
 
 		colorTransform.redMultiplier = 1.0 + newbright;
