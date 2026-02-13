@@ -7,6 +7,7 @@ import macohi.overrides.MSprite;
 class InteractableMSprite extends MSprite
 {
 	public var onOverlap:FlxSignal = new FlxSignal();
+	public var onUnOverlap:FlxSignal = new FlxSignal();
 	public var overlaping:Bool = false;
 
 	public var onLeftClick_justPressed:FlxSignal = new FlxSignal();
@@ -44,6 +45,9 @@ class InteractableMSprite extends MSprite
 				onRightClick_justReleased.dispatch();
 		}
 		else if (overlaping)
+		{
+			onUnOverlap.dispatch();
 			overlaping = false;
+		}
 	}
 }
