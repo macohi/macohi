@@ -1,5 +1,7 @@
 package macohi.overrides;
 
+import flixel.system.FlxAssets.FlxGraphicAsset;
+import flixel.FlxSprite;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import animate.FlxAnimate;
@@ -10,6 +12,12 @@ import animate.FlxAnimate;
 **/
 class MSprite extends FlxAnimate
 {
+	override function loadGraphic(graphic:FlxGraphicAsset, animated:Bool = false, frameWidth:Int = 0, frameHeight:Int = 0, unique:Bool = false,
+			?key:String):MSprite
+	{
+		return cast super.loadGraphic(graphic, animated, frameWidth, frameHeight, unique, key);
+	}
+
 	/**
 		Recommended not to check for or modify this
 		if you're editing the `colorTransform._Multiplier` (red, green or blue) variables
