@@ -10,6 +10,19 @@ import animate.FlxAnimate;
 **/
 class MSprite extends FlxAnimate
 {
+	public function setPositionBasedOnDimensions(x:Float = 0, y:Float = 0, desiredW:Float = 1280, desiredH:Float = 720)
+	{
+		var newX = x;
+		var newY = y;
+
+		if (FlxG.width != desiredW)
+			newX = x * (FlxG.width / desiredW);
+		if (FlxG.height != desiredH)
+			newY = y * (FlxG.height / desiredH);
+
+		setPosition(newX, newY);
+	}
+
 	override function makeGraphic(width:Int, height:Int, color:FlxColor = FlxColor.WHITE, unique:Bool = false, ?key:String):MSprite
 	{
 		return cast super.makeGraphic(width, height, color, unique, key);
