@@ -36,12 +36,15 @@ class AssetPaths
 		return null;
 	}
 
-	public static function getPath(path:String, ?library:String):String
+	public static function getPath(path:String, ?library:String, ?libraryFunc:Bool = false):String
 	{
-		if (!library.isBlank())
-			return getLibraryPath(path, library);
-		else if (!currentLevel.isBlank())
-			return getLibraryPath(path, currentLevel);
+		if (!libraryFunc)
+		{
+			if (!library.isBlank())
+				return getLibraryPath(path, library);
+			else if (!currentLevel.isBlank())
+				return getLibraryPath(path, currentLevel);
+		}
 
 		#if MOD_SUPPORT
 		var modReturn = getPathMod(path, library);
@@ -74,7 +77,7 @@ class AssetPaths
 		if (library.isBlank())
 			return getPath(path);
 
-		return getPath('$library/$path');
+		return getPath('$library/$path', null, true);
 	}
 
 	public static function frag(path:String, ?library:String):String
