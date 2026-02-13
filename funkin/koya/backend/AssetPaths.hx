@@ -14,6 +14,14 @@ class AssetPaths
 
 	public static var tempDisableModCheck:Bool = false;
 
+	public static var currentLevel:String = null;
+
+	public static function setCurrentLevel(newLevel:String = null)
+	{
+		currentLevel = newLevel;
+		trace('Changing level to $newLevel');
+	}
+
 	public static function getPathMod(path:String, ?library:String):String
 	{
 		// if (!tempDisableModCheck) for (mod in ModCore.enabledMods)
@@ -32,6 +40,8 @@ class AssetPaths
 	{
 		if (library != null)
 			return getLibraryPath(path, library);
+		else if (currentLevel != null)
+			return getLibraryPath(path, currentLevel);
 
 		#if MOD_SUPPORT
 		var modReturn = getPathMod(path, library);
