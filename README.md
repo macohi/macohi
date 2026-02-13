@@ -73,3 +73,11 @@ Or you can add this:
 <define name="ENABLE_NEWGROUNDS"/>
 ```
 and compile to html5
+
+## Include assets
+
+Do this
+```xml
+<assets path="source/macohi/assets" rename="assets"/>
+```
+and u'll get the assets in here
