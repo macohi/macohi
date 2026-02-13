@@ -16,9 +16,9 @@ class MSprite extends FlxAnimate
 		var newY = y;
 
 		if (FlxG.width != desiredW)
-			newX = x * (FlxG.width / desiredW);
+			newX = x * (desiredW / FlxG.width);
 		if (FlxG.height != desiredH)
-			newY = y * (FlxG.height / desiredH);
+			newY = y * (desiredH / FlxG.height);
 
 		setPosition(newX, newY);
 	}
