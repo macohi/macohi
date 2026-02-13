@@ -22,7 +22,7 @@ class CustomTrace
 		},
 	];
 
-	public static function formatOutput(v:Dynamic, ?pos:PosInfos):String
+	public static dynamic function formatOutput(v:Dynamic, ?pos:PosInfos):String
 	{
 		var nv:String = Std.string(v);
 
@@ -51,7 +51,7 @@ class CustomTrace
 		return nv;
 	}
 
-	public static function newTrace(v:Dynamic, ?pos:PosInfos)
+	public static dynamic function newTrace(v:Dynamic, ?pos:PosInfos)
 	{
 		var str:String = formatOutput(v, pos);
 
