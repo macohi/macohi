@@ -10,7 +10,6 @@ import flixel.math.FlxMath;
 import macohi.funkin.pre_vslice.Conductor;
 import macohi.funkin.pre_vslice.MusicBeatState;
 import flixel.FlxG;
-import koya.frontend.scenes.*;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
 using StringTools;
@@ -29,7 +28,7 @@ class MenuState extends MusicBeatState
 	public var itemList:Array<String> = [];
 	public var itemsSpriteGroup:FlxTypedGroup<MenuItem>;
 
-	// public var itemsAtlasTextGroup:FlxTypedGroup<AtlasText>;
+	public var itemsAtlasTextGroup:FlxTypedGroup<AtlasText>;
 	public var itemsFlxTextGroup:FlxTypedGroup<FlxText>;
 
 	public var currentSelection:Int = 0;
@@ -67,8 +66,8 @@ class MenuState extends MusicBeatState
 		itemsSpriteGroup = new FlxTypedGroup<MenuItem>();
 		add(itemsSpriteGroup);
 
-		// itemsAtlasTextGroup = new FlxTypedGroup<AtlasText>();
-		// add(itemsAtlasTextGroup);
+		itemsAtlasTextGroup = new FlxTypedGroup<AtlasText>();
+		add(itemsAtlasTextGroup);
 
 		itemsFlxTextGroup = new FlxTypedGroup<FlxText>();
 		add(itemsFlxTextGroup);
@@ -102,15 +101,15 @@ class MenuState extends MusicBeatState
 
 	public function makeAtlasText(item:String, i:Int)
 	{
-		makeFlxText(item, i);
+		var menuItem = new AtlasText((menuType == Horizontal) ? -640 : 0, (menuType == Vertical) ? -640 : 0, item, BOLD);
 
-		// var menuItem = new AtlasText((menuType == Horizontal) ? -640 : 0, (menuType == Vertical) ? -640 : 0, item, BOLD);
+		if (menuType == Horizontal)
+			menuItem.screenCenter(Y);
+		if (menuType == Vertical)
+			menuItem.screenCenter(X);
 
-		// if (menuType == Horizontal) menuItem.screenCenter(Y);
-		// if (menuType == Vertical) menuItem.screenCenter(X);
-
-		// menuItem.ID = i;
-		// itemsAtlasTextGroup.add(menuItem);
+		menuItem.ID = i;
+		itemsAtlasTextGroup.add(menuItem);
 	}
 
 	public function makeFlxText(item:String, i:Int)
@@ -153,13 +152,11 @@ class MenuState extends MusicBeatState
 	{
 		if (text && !atlasText)
 			accepted(itemsFlxTextGroup.members[currentSelection].text);
-		// if (text && atlasText)
-		// accepted(itemsAtlasTextGroup.members[currentSelection].text);
+		if (text && atlasText)
+			accepted(itemsAtlasTextGroup.members[currentSelection].text);
 
 		if (!text)
-		{
 			accepted(itemsSpriteGroup.members[currentSelection].item);
-		}
 	}
 
 	public var controls(get, never):Dynamic;
@@ -224,14 +221,14 @@ class MenuState extends MusicBeatState
 					menuItem.y = FlxMath.lerp(menuItem.y, itemStartingPos + (itemIncOffset * (menuItem.ID - currentSelection)), .1);
 			}
 
-		// if (text && atlasText)
-		// 	for (menuItem in itemsAtlasTextGroup.members)
-		// 	{
-		// 		if (menuType == Horizontal)
-		// 			menuItem.x = FlxMath.lerp(menuItem.x, itemStartingPos + (itemIncOffset * (menuItem.ID - currentSelection)), .1);
-		// 		if (menuType == Vertical)
-		// 			menuItem.y = FlxMath.lerp(menuItem.y, itemStartingPos + (itemIncOffset * (menuItem.ID - currentSelection)), .1);
-		// 	}
+		if (text && atlasText)
+			for (menuItem in itemsAtlasTextGroup.members)
+			{
+				if (menuType == Horizontal)
+					menuItem.x = FlxMath.lerp(menuItem.x, itemStartingPos + (itemIncOffset * (menuItem.ID - currentSelection)), .1);
+				if (menuType == Vertical)
+					menuItem.y = FlxMath.lerp(menuItem.y, itemStartingPos + (itemIncOffset * (menuItem.ID - currentSelection)), .1);
+			}
 
 		if (text && !atlasText)
 			for (menuItem in itemsFlxTextGroup.members)
@@ -286,16 +283,16 @@ class MenuState extends MusicBeatState
 				if (menuItem.ID == currentSelection)
 					menuItem.playAnim('selected');
 			}
-		// if (text && atlasText)
-		// 	for (menuItem in itemsAtlasTextGroup.members)
-		// 	{
-		// 		if (menuType == Horizontal)
-		// 			menuItem.screenCenter(Y);
-		// 		if (menuType == Vertical)
-		// 			menuItem.screenCenter(X);
+		if (text && atlasText)
+			for (menuItem in itemsAtlasTextGroup.members)
+			{
+				if (menuType == Horizontal)
+					menuItem.screenCenter(Y);
+				if (menuType == Vertical)
+					menuItem.screenCenter(X);
 
-		// 		menuItem.alpha = (menuItem.ID == currentSelection) ? 1.0 : 0.6;
-		// 	}
+				menuItem.alpha = (menuItem.ID == currentSelection) ? 1.0 : 0.6;
+			}
 		if (text && !atlasText)
 			for (menuItem in itemsFlxTextGroup.members)
 			{
@@ -331,8 +328,8 @@ class MenuState extends MusicBeatState
 		FlxFlicker.flicker(pinkBG, (confirmMenu.length / 2) / 1000, .1);
 		if (!text)
 			FlxFlicker.flicker(itemsSpriteGroup.members[currentSelection], (confirmMenu.length / 2) / 500, .05);
-		// if (text && atlasText)
-		// 	FlxFlicker.flicker(itemsAtlasTextGroup.members[currentSelection], (confirmMenu.length / 2) / 500, .05);
+		if (text && atlasText)
+			FlxFlicker.flicker(itemsAtlasTextGroup.members[currentSelection], (confirmMenu.length / 2) / 500, .05);
 		if (text && !atlasText)
 			FlxFlicker.flicker(itemsFlxTextGroup.members[currentSelection], (confirmMenu.length / 2) / 500, .05);
 
