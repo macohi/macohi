@@ -12,13 +12,8 @@ class MSprite extends FlxAnimate
 {
 	public function setPositionBasedOnDimensions(x:Float = 0, y:Float = 0, desiredW:Float = 1280, desiredH:Float = 720)
 	{
-		var newX = x;
-		var newY = y;
-
-		if (FlxG.width != desiredW)
-			newX = x * (desiredW / FlxG.width);
-		if (FlxG.height != desiredH)
-			newY = y * (desiredH / FlxG.height);
+		var newX = x * (FlxG.width / desiredW);
+		var newY = y * (FlxG.height / desiredH);
 
 		setPosition(newX, newY);
 	}
