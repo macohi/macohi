@@ -40,7 +40,7 @@ class Save
 			flush();
 			for (field in Reflect.fields(FlxG.save.data))
 			{
-				if (!Reflect.fields(Save).contains(field))
+				if (!Reflect.fields(this).contains(field))
 					continue;
 				if (toobig.contains(field))
 					continue;
