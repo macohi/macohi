@@ -7,3 +7,4 @@ haxelib install flixel-ui
 haxelib install flixel-animate
 haxelib install openfl
 haxelib install lime
+haxelib install newgrounds

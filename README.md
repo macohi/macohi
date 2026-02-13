@@ -33,6 +33,7 @@ These are required
 <haxelib name="flixel-addons" />
 <haxelib name="flixel-ui" />
 <haxelib name="flixel-animate" />
+<haxelib name="newgrounds" if="ENABLE_NEWGROUNDS"/>
 ```
 
 # Other shit
