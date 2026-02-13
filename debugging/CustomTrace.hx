@@ -23,11 +23,8 @@ class CustomTrace
 		var nv:String = Std.string(v);
 		var posInfos:String = '';
 
-		if (pos.className != null)
-			if (pos.lineNumber != null)
-				posInfos += '${pos.className}:${pos.lineNumber}'.bg_bright_blue() + ' ';
-			else
-				posInfos += '${pos.className}'.bg_bright_blue() + ' ';
+		if (pos != null)
+			posInfos += '${pos.className}:${pos.lineNumber}'.bg_bright_blue() + ' ';
 
 		nv = '$posInfos$nv';
 
