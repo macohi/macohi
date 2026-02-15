@@ -5,6 +5,7 @@ haxelib install flixel
 haxelib install flixel-addons
 haxelib install flixel-ui
 haxelib install flixel-animate
+haxelib install flixel-waveform
 haxelib install openfl
 haxelib install lime
 haxelib install newgrounds

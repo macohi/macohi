@@ -2,6 +2,7 @@
 --library flixel-addons
 --library flixel-ui
 --library flixel-animate
+--library flixel-waveform
 --library lime
 --library openfl
 --library newgrounds
