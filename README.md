@@ -33,7 +33,6 @@ These are required
 <haxelib name="flixel-addons" />
 <haxelib name="flixel-ui" />
 <haxelib name="flixel-animate" />
-<haxelib name="flixel-waveform" />
 <haxelib name="newgrounds" if="ENABLE_NEWGROUNDS"/>
 ```
 
@@ -70,15 +69,19 @@ Add this to your Project so the crash handler works
 Build your game with `-DENABLE_NEWGROUNDS` for newgrounds shit
 
 Or you can add this:
+
 ```xml
 <define name="ENABLE_NEWGROUNDS"/>
 ```
+
 and compile to html5
 
 ## Include assets
 
 Do this
+
 ```xml
 <assets path="source/macohi/assets" rename="assets"/>
 ```
+
 and u'll get the assets in here

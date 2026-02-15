@@ -27,4 +27,10 @@ class MSound extends FlxSound
 
 		super.startSound(StartTime);
 	}
+
+	override public function loadEmbedded(EmbeddedSound:FlxSoundAsset, Looped:Bool = false, AutoDestroy:Bool = false, ?OnComplete:Void->Void):MSound
+		return cast super.loadEmbedded(EmbeddedSound, Looped, AutoDestroy, OnComplete);
+
+	override function init(Looped:Bool = false, AutoDestroy:Bool = false, ?OnComplete:() -> Void):MSound
+		return cast super.init(Looped, AutoDestroy, OnComplete);
 }
