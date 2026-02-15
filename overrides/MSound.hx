@@ -1,8 +1,8 @@
 package macohi.overrides;
 
-import flixel.util.FlxSignal;
-import flixel.system.FlxAssets.FlxSoundAsset;
 import flixel.sound.FlxSound;
+import flixel.system.FlxAssets.FlxSoundAsset;
+import flixel.util.FlxSignal;
 
 class MSound extends FlxSound
 {
@@ -29,5 +29,5 @@ class MSound extends FlxSound
 	}
 
 	override public function loadEmbedded(EmbeddedSound:FlxSoundAsset, Looped:Bool = false, AutoDestroy:Bool = false, ?OnComplete:Void->Void):MSound
-		return cast loadEmbedded(EmbeddedSound, Looped, AutoDestroy, OnComplete);
+		return cast super.loadEmbedded(EmbeddedSound, Looped, AutoDestroy, OnComplete);
 }
