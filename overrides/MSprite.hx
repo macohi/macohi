@@ -6,10 +6,6 @@ import flixel.util.FlxColor;
 import flixel.FlxG;
 import animate.FlxAnimate;
 
-/**
-	Ex-Override of `animate.FlxAnimate` / `flixel.FlxSprite` to apply
-	custom functionality to it.
-**/
 class MSprite extends FlxAnimate
 {
 	override function loadGraphic(graphic:FlxGraphicAsset, animated:Bool = false, frameWidth:Int = 0, frameHeight:Int = 0, unique:Bool = false,

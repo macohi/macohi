@@ -2,10 +2,6 @@ package macohi.overrides;
 
 import flixel.text.FlxText;
 
-/**
-	Override of `flixel.text.FlxText` to apply
-	custom functionality to it.
-**/
 class MText extends FlxText
 {
 	/** Quickly generate a new Text Object with text and size parameters **/

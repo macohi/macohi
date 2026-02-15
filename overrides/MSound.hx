@@ -1,0 +1,33 @@
+package macohi.overrides;
+
+import flixel.util.FlxSignal;
+import flixel.system.FlxAssets.FlxSoundAsset;
+import flixel.sound.FlxSound;
+
+class MSound extends FlxSound
+{
+	public var onFinish:FlxSignal = new FlxSignal();
+	public var onStart:FlxSignal = new FlxSignal();
+
+	override public function new()
+	{
+		super();
+
+		onComplete = () ->
+		{
+			if (onFinish != null)
+				onFinish.dispatch();
+		}
+	}
+
+	override function startSound(StartTime:Float)
+	{
+		if (onStart != null)
+			onStart.dispatch();
+
+		super.startSound(StartTime);
+	}
+
+	override public function loadEmbedded(EmbeddedSound:FlxSoundAsset, Looped:Bool = false, AutoDestroy:Bool = false, ?OnComplete:Void->Void):MSound
+		return cast loadEmbedded(EmbeddedSound, Looped, AutoDestroy, OnComplete);
+}
