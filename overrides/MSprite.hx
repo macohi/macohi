@@ -7,6 +7,11 @@ import flixel.util.FlxColor;
 
 class MSprite extends FlxAnimate
 {
+	public function addAnimByFrames(name:String, frames:Array<Int>, ?fps:Int = 24, ?looped:Bool = false)
+	{
+		animation.add(name, frames, fps, looped);
+	}
+
 	public static var PIXEL_SCALE:Float = 4.0;
 
 	public function applyPixelScale()
