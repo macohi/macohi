@@ -2,18 +2,19 @@ package macohi.debugging;
 
 // crash handler stuff
 import haxe.Template;
+
 using StringTools;
 using macohi.util.StringUtil;
 
 #if CRASH_HANDLER
 import haxe.CallStack;
 import haxe.io.Path;
+import macohi.util.WindowUtil;
 import openfl.Lib;
 import openfl.events.UncaughtErrorEvent;
 import sys.FileSystem;
 import sys.io.File;
 #end
-
 
 /**
 	This is to fix the annoying crashes with no
@@ -108,7 +109,7 @@ class CrashHandler
 		Sys.println(errMsg);
 		Sys.println("Crash dump saved in " + Path.normalize(path));
 
-		Application.current.window.alert(errMsg, "Error!");
+		WindowUtil.alert("Error!", errMsg);
 		Sys.exit(1);
 	}
 	#end
