@@ -1,12 +1,12 @@
 package macohi.funkin.koya.backend;
 
-// import koya.backend.modding.ModCore;
 import animate.FlxAnimateFrames;
 import flixel.graphics.frames.FlxAtlasFrames;
 
+// import koya.backend.modding.ModCore;
+using StringTools;
 using haxe.io.Path;
 using macohi.util.StringUtil;
-using StringTools;
 
 class AssetPaths
 {
@@ -40,9 +40,9 @@ class AssetPaths
 	{
 		if (!libraryFunc)
 		{
-			if (!library.isBlank())
+			if (!library.isBlankStr())
 				return getLibraryPath(path, library);
-			else if (!currentLevel.isBlank())
+			else if (!currentLevel.isBlankStr())
 				return getLibraryPath(path, currentLevel);
 		}
 
@@ -74,7 +74,7 @@ class AssetPaths
 
 	public static function getLibraryPath(path:String, ?library:String):String
 	{
-		if (library.isBlank())
+		if (library.isBlankStr())
 			return getPath(path);
 
 		return getPath('$library/$path', null, true);

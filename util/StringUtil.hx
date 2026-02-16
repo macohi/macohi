@@ -15,9 +15,14 @@ class StringUtil
 	 * @param value The string to check.
 	 * @return True... or False...
 	 */
-	public static function isBlank(value:String):Bool
+	public static function isBlankStr(value:String):Bool
 	{
 		return value == null || value.trim().length == 0;
+	}
+	
+	public static function isBlankStrArray(value:Array<String>):Bool
+	{
+		return value == null || value.length == 0;
 	}
 
 	public static function splitStringByNewlines(str:String):Array<String>

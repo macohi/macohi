@@ -32,16 +32,16 @@ class CrashHandler
 
 	public static function initalize(?new_file_location:String, ?new_file_prefix:String, ?new_github_user:String, ?new_github_repo:String)
 	{
-		if (!new_file_prefix.isBlank())
+		if (!new_file_prefix.isBlankStr())
 			FILE_PREFIX = new_file_prefix;
 
-		if (!new_github_user.isBlank())
+		if (!new_github_user.isBlankStr())
 			GITHUB_USER = new_github_user;
 
-		if (!new_github_repo.isBlank())
+		if (!new_github_repo.isBlankStr())
 			GITHUB_REPO = new_github_repo;
 
-		if (!new_file_location.isBlank())
+		if (!new_file_location.isBlankStr())
 			FILE_LOCATION = new_file_location;
 
 		REPORT_PAGE = new Template(REPORT_PAGE).execute({

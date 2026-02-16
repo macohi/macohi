@@ -6,18 +6,27 @@ using macohi.util.StringUtil;
 
 class FlxKeyUtil
 {
-	public static function keyToString(key:FlxKey):String
-		return key.toString();
+	public static function invalidKey(key:Null<FlxKey>)
+		return key == null;
 
-	public static function stringToKey(key:String):FlxKey
-		return FlxKey.fromString(key);
+	public static function invalidKeys(keys:Array<FlxKey>)
+		return keys == null || keys.length == 0;
+
+	public static function keyToString(key:Null<FlxKey>):String
+		return (invalidKey(key)) ? null : key.toString();
+
+	public static function stringToKey(key:String):Null<FlxKey>
+		return (key.isBlankStr()) ? null : FlxKey.fromString(key);
 
 	public static function keysArrayToStringArray(keys:Array<FlxKey>):Array<String>
 	{
 		var stringArray:Array<String> = [];
 
+		if (invalidKeys(keys))
+			return [];
+
 		for (key in keys)
-			if (!keyToString(key).isBlank())
+			if (!keyToString(key).isBlankStr())
 				stringArray.push(keyToString(key));
 
 		return stringArray;
@@ -27,8 +36,10 @@ class FlxKeyUtil
 	{
 		var keysArray:Array<FlxKey> = [];
 
+		if (keys.isBlankStrArray()) return [];
+
 		for (key in keys)
-			if (!key.isBlank())
+			if (!key.isBlankStr())
 				keysArray.push(stringToKey(key));
 
 		return keysArray;
@@ -38,8 +49,11 @@ class FlxKeyUtil
 	{
 		var stringArray:Array<String> = [];
 
+		if (invalidKeys(keys))
+			return '';
+
 		for (key in keys)
-			if (!keyToString(key).isBlank())
+			if (!keyToString(key).isBlankStr())
 				stringArray.push(keyToString(key) + ',');
 
 		stringArray[stringArray.length - 1] = 'or ${stringArray[stringArray.length - 1].substr(0, stringArray[stringArray.length - 1].length - 1)}';

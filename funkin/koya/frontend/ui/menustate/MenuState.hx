@@ -1,16 +1,16 @@
 package macohi.funkin.koya.frontend.ui.menustate;
 
-import macohi.funkin.koya.backend.AssetPaths;
-import flixel.util.FlxColor;
-import flixel.text.FlxText;
-import flixel.util.FlxTimer;
-import flixel.sound.FlxSound;
+import flixel.FlxG;
 import flixel.effects.FlxFlicker;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
+import flixel.sound.FlxSound;
+import flixel.text.FlxText;
+import flixel.util.FlxColor;
+import flixel.util.FlxTimer;
+import macohi.funkin.koya.backend.AssetPaths;
 import macohi.funkin.pre_vslice.Conductor;
 import macohi.funkin.pre_vslice.MusicBeatState;
-import flixel.FlxG;
-import flixel.group.FlxGroup.FlxTypedGroup;
 
 using StringTools;
 using macohi.util.StringUtil;
@@ -292,7 +292,7 @@ class MenuState extends MusicBeatState
 			}
 
 		if (change != 0)
-			if (!MegaVars.SOUND_MENU_SCROLL.isBlank())
+			if (!MegaVars.SOUND_MENU_SCROLL.isBlankStr())
 				FlxG.sound.play(MegaVars.SOUND_MENU_SCROLL);
 	}
 
@@ -306,7 +306,7 @@ class MenuState extends MusicBeatState
 		transitioning = true;
 
 		var confirmMenu = new FlxSound();
-		if (!MegaVars.SOUND_MENU_CONFIRM.isBlank())
+		if (!MegaVars.SOUND_MENU_CONFIRM.isBlankStr())
 			confirmMenu.loadEmbedded(MegaVars.SOUND_MENU_CONFIRM);
 
 		confirmMenu.play();
