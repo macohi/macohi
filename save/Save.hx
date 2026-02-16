@@ -1,7 +1,7 @@
 package macohi.save;
 
-import lime.app.Application;
 import flixel.FlxG;
+import lime.app.Application;
 
 using macohi.funkin.vslice.util.AnsiUtil;
 
@@ -13,16 +13,9 @@ class Save
 
 	public var version:SaveField<Null<Int>>;
 
-	public var saveTracePrefix(get, never):String;
-
-	function get_saveTracePrefix():String
-	{
-		return '';
-	}
-
 	function initFields()
 	{
-		trace(saveTracePrefix + 'Initalizing Save fields');
+		trace(' * Initalizing Save fields');
 		version = new SaveField<Null<Int>>('version', SAVE_VERSION);
 	}
 
@@ -30,7 +23,7 @@ class Save
 
 	public function init(project:String, ?company:String)
 	{
-		trace(saveTracePrefix + 'Initalizing Save');
+		trace('Initalizing Save: $project');
 		FlxG.save.bind(project, company ?? Application.current.meta.get('company'));
 
 		initFields();
@@ -45,7 +38,7 @@ class Save
 				if (toobig.contains(field))
 					continue;
 
-				trace(saveTracePrefix + 'Save.${field} : ${Reflect.field(FlxG.save.data, field)}');
+				trace(' * Save.${field} : ${Reflect.field(FlxG.save.data, field)}');
 			}
 		});
 
@@ -66,7 +59,7 @@ class Save
 		}
 		else
 		{
-			trace(saveTracePrefix + 'Upgraded Save to $SAVE_VERSION');
+			trace('Upgraded Save to $SAVE_VERSION');
 			if (onComplete != null)
 				onComplete();
 		}
