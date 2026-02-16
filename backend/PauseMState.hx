@@ -1,8 +1,8 @@
 package macohi.backend;
 
+import flixel.FlxG;
 import flixel.util.FlxColor;
 import macohi.overrides.MSprite;
-import flixel.FlxG;
 import macohi.overrides.MState;
 
 class PauseMState extends MState
@@ -13,13 +13,13 @@ class PauseMState extends MState
 
 	override function create()
 	{
-		super.create();
-
 		pauseBG = new MSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		pauseBG.alpha = 0.6;
 		add(pauseBG);
 
 		togglePaused();
+
+		super.create();
 	}
 
 	override function update(elapsed:Float)
