@@ -13,7 +13,7 @@ class MState extends FlxState
 	}
 
 	public var leftWatermark:MText = new MText(10, 10, FlxG.width, 'left watermark', 8);
-	public var rightWatermark:MText = new MText(10, 10, FlxG.width, 'right watermark', 8);
+	public var rightWatermark:MText = new MText(-10, 10, FlxG.width, 'right watermark', 8);
 
 	override function create() {
 		super.create();
@@ -23,6 +23,7 @@ class MState extends FlxState
 
 		for (watermark in [leftWatermark, rightWatermark])
 		{
+			watermark.fieldWidth = FlxG.width - Math.abs(watermark.x);
 			watermark.setBorderStyle(OUTLINE, FlxColor.BLACK, 3);
 			watermark.visible = false;
 			add(watermark);
