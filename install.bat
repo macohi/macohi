@@ -1,6 +1,8 @@
 : Do you really want this a global thing? Then disable this.
 haxelib newrepo
 
+haxelib install hscript
+
 haxelib install hxcpp
 haxelib install hxcpp-debug-server
 
