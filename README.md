@@ -43,7 +43,7 @@ These are required
 This speeds up compilin
 
 ```xml
-<haxeflag name="--dce full" if="release"/>
+<haxeflag name="--dce full" unless="debug"/>
 ```
 
 ## I'm getting errors about missing classes!
