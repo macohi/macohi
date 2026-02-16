@@ -1,13 +1,20 @@
 package macohi.overrides;
 
-import flixel.system.FlxAssets.FlxGraphicAsset;
-import flixel.FlxSprite;
-import flixel.util.FlxColor;
-import flixel.FlxG;
 import animate.FlxAnimate;
+import flixel.FlxSprite;
+import flixel.system.FlxAssets.FlxGraphicAsset;
+import flixel.util.FlxColor;
 
 class MSprite extends FlxAnimate
 {
+	public static var PIXEL_SCALE:Float = 6.0;
+
+	public function applyPixelScale()
+	{
+		this.scale.set(PIXEL_SCALE, PIXEL_SCALE);
+		updateHitbox();
+	}
+
 	override function loadGraphic(graphic:FlxGraphicAsset, animated:Bool = false, frameWidth:Int = 0, frameHeight:Int = 0, unique:Bool = false,
 			?key:String):MSprite
 	{
