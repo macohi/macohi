@@ -24,7 +24,7 @@ class MusicManager extends FlxBasic
 		return AssetPaths.music(track);
 	}
 
-	// 15% chance for it to play
+	// _% chance for it to play
 	public static var MUSIC_FREQUENCY:Float = 15.0;
 
 	public static var musicTimer:FlxTimer;
