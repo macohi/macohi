@@ -4,6 +4,8 @@ import flixel.FlxBasic;
 import flixel.FlxG;
 import macohi.funkin.koya.backend.AssetPaths;
 
+using macohi.util.TimeUtil;
+
 class MusicManager extends FlxBasic
 {
 	public static var tracks:Array<String> = [];
@@ -26,6 +28,10 @@ class MusicManager extends FlxBasic
 	// _% chance for it to play
 	public static var MUSIC_FREQUENCY:Float = 15.0;
 
+	public static var lastAttemptTime:Date;
+
+	public static var secondsUntilCanPlayMusicAgain:Float = 15.0;
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
@@ -33,6 +39,12 @@ class MusicManager extends FlxBasic
 		if (!FlxG.sound.music?.playing || FlxG.sound.music == null)
 		{
 			trace('Music Attempt');
+
+			if (lastAttemptTime != null)
+				if (Date.now().getTime() - lastAttemptTime.getTime() < secondsUntilCanPlayMusicAgain.convert_s_to_ms())
+					return;
+
+			lastAttemptTime = Date.now();
 
 			if (FlxG.random.bool(MUSIC_FREQUENCY))
 				FlxG.sound.playMusic(getRandomTrackPath(), 1);
