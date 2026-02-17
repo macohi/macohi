@@ -331,7 +331,7 @@ class MenuState extends MusicBeatState
 
 	public function accept(item:String)
 	{
-		if (item.trim() == '' || item == null)
+		if (item.isBlankStr())
 			return;
 	}
 }
