@@ -46,10 +46,7 @@ class MusicManager extends FlxBasic
 			else
 				mt.time += FlxG.random.float(30, 90);
 		}, 0);
-	}
 
-	override function update(elapsed:Float)
-	{
-		super.update(elapsed);
+		musicTimer.active = true;
 	}
 }
