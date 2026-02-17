@@ -35,6 +35,8 @@ class MusicManager extends FlxBasic
 
 		musicTimer = new FlxTimer().start(0, function(mt)
 		{
+			trace('Attempt at music made');
+
 			if (!FlxG.sound.music?.playing || FlxG.sound.music == null)
 			{
 				if (FlxG.random.bool(MUSIC_FREQUENCY))
