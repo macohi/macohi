@@ -309,7 +309,8 @@ class MenuState extends MusicBeatState
 
 	public function acceptedFlicker(confirmMenu:FlxSound, item:String)
 	{
-		FlxFlicker.flicker(pinkBG, (confirmMenu.length / 2) / 1000, .1);
+		if (pinkBG.visible)
+			FlxFlicker.flicker(pinkBG, (confirmMenu.length / 2) / 1000, .1);
 		if (!text)
 			FlxFlicker.flicker(itemsSpriteGroup.members[currentSelection.value()], (confirmMenu.length / 2) / 500, .05);
 		if (text && atlasText)
