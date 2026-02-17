@@ -245,9 +245,8 @@ class MenuState extends MusicBeatState
 	public function select(change:Int = 0)
 	{
 		currentSelection.scroll(change);
-		
-		currentSelection.resetIfOver(itemList.length);
-		currentSelection.resetIfUnder(0);
+
+		currentSelection.resetIfBoth(itemList.length, itemList.length - 1, 0, 0);
 
 		var aSplitterItem = function()
 		{

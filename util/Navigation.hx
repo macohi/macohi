@@ -26,31 +26,27 @@ abstract Navigation(Int)
 		this = amount;
 	}
 
-	inline function reset()
+	inline function reset(resetValue:Int = 0)
 	{
-		this = 0;
+		this = resetValue;
 	}
 
-	inline function resetIfOver(amount:Int)
+	inline function resetIfOver(amount:Int, resetValue:Int = 0)
 	{
 		if (this >= amount)
-		{
-			this = 0;
-		}
+			reset(resetValue);
 	}
 
-	inline function resetIfUnder(setTo:Int)
+	inline function resetIfUnder(setTo:Int, under:Int = 0)
 	{
-		if (this < 0)
-		{
+		if (this < under)
 			this = setTo;
-		}
 	}
 
-	inline function resetIfBoth(over:Int, setTo:Int)
+	inline function resetIfBoth(over:Int, setTo:Int, under:Int = 0, resetValue:Int = 0)
 	{
-		resetIfOver(over);
-		resetIfUnder(setTo);
+		resetIfOver(over, resetValue);
+		resetIfUnder(setTo, under);
 	}
 
 	inline function value()
