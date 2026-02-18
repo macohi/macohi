@@ -2,23 +2,37 @@ package macohi.debugging;
 
 import haxe.PosInfos;
 
-using macohi.funkin.vslice.util.AnsiUtil;
 using StringTools;
+using macohi.funkin.vslice.util.AnsiUtil;
+using macohi.util.ArrayUtil;
 
 class CustomTrace
 {
+	public static var tracesList:Array<String> = [];
+
+	public static var ALLOW_ANSI:Bool = true;
+
 	public static var formatWordOptions:Map<String, (String, String) -> String> = [
 		'<warning>' => function(key:String, v:String)
 		{
-			return v?.replace(key, ' WARNING '.warning());
+			if (ALLOW_ANSI)
+				return v?.replace(key, ' WARNING '.warning());
+
+			return v?.replace(key, ' [WARNING] ');
 		},
 		'<error>' => function(key:String, v:String)
 		{
-			return v?.replace(key, ' ERROR '.error());
+			if (ALLOW_ANSI)
+				return v?.replace(key, ' ERROR '.error());
+
+			return v?.replace(key, ' [ERROR] ');
 		},
 		'<reset>' => function(key:String, v:String)
 		{
-			return v?.replace(key, AnsiCode.RESET);
+			if (ALLOW_ANSI)
+				return v?.replace(key, AnsiCode.RESET);
+
+			return v?.replace(key, '');
 		},
 	];
 
@@ -51,9 +65,30 @@ class CustomTrace
 		return nv;
 	}
 
+	public static var logDirectory:String = 'logs/';
+	public static var logTime:Null<Float> = null;
+
 	public static dynamic function newTrace(v:Dynamic, ?pos:PosInfos)
 	{
 		var str:String = formatOutput(v, pos);
+
+		tracesList.push(str);
+
+		#if sys
+		if (!sys.FileSystem.exists(logDirectory))
+		{
+			sys.FileSystem.createDirectory(logDirectory);
+			Sys.println('Created log directory: $logDirectory');
+		}
+
+		if (logTime == null)
+		{
+			logTime = Date.now().getTime();
+			Sys.println('Log file name: ${logTime}.txt');
+		}
+
+		sys.io.File.saveContent('${logDirectory}${logTime}.txt', tracesList.convertStrArrayToStrNL());
+		#end
 
 		#if js
 		if (js.Syntax.typeof(untyped console) != "undefined" && (untyped console).log != null)

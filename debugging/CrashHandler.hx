@@ -93,7 +93,7 @@ class CrashHandler
 				case FilePos(s, file, line, column):
 					errMsg += file + ":" + line + " \n";
 				default:
-					Sys.println(stackItem);
+					trace(stackItem);
 			}
 		}
 
@@ -105,9 +105,9 @@ class CrashHandler
 
 		File.saveContent(path, errMsg + "\n");
 
-		Sys.println('\n\nCRASH:\n');
-		Sys.println(errMsg);
-		Sys.println("Crash dump saved in " + Path.normalize(path));
+		trace('\n\nCRASH:\n');
+		trace(errMsg);
+		trace("Crash dump saved in " + Path.normalize(path));
 
 		WindowUtil.alert("Error!", errMsg);
 		Sys.exit(1);
