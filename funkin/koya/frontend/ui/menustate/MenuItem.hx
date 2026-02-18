@@ -1,6 +1,7 @@
 package macohi.funkin.koya.frontend.ui.menustate;
 
 import macohi.funkin.koya.backend.AssetPaths;
+import macohi.funkin.koya.backend.KoyaAssets;
 
 class MenuItem extends FunkinSprite
 {
@@ -11,15 +12,19 @@ class MenuItem extends FunkinSprite
 		super(x, y);
 
 		this.item = item;
-		frames = AssetPaths.fromSparrow('$pathPrefix$item', MegaVars.KOYA_MENUITEM_LIBRARY);
+		
+		if (KoyaAssets.exists(AssetPaths.xml('images/$pathPrefix$item', MegaVars.KOYA_MENUITEM_LIBRARY)))
+		{
+			frames = AssetPaths.fromSparrow('$pathPrefix$item', MegaVars.KOYA_MENUITEM_LIBRARY);
 
-		addPrefixAnim('idle', '$item idle');
-		addPrefixAnim('selected', '$item selected');
-		makeOffsets();
-		updateHitbox();
+			addPrefixAnim('idle', '$item idle');
+			addPrefixAnim('selected', '$item selected');
+			makeOffsets();
+			updateHitbox();
 
-		playAnim('idle');
-		updateHitbox();
+			playAnim('idle');
+			updateHitbox();
+		}
 	}
 
 	public function makeOffsets()
