@@ -1,6 +1,5 @@
 package macohi.funkin.koya.backend;
 
-import flixel.FlxG;
 import macohi.util.StringUtil;
 
 using StringTools;
@@ -26,11 +25,7 @@ class AssetTextList
 
 	function get_textList():Array<String>
 	{
-		var txts:Array<String> = StringUtil.splitTextAssetByNewlines(filepath);
-
-		for (append in getAppends())
-			for (v in StringUtil.splitTextAssetByNewlines(append))
-				txts.push(v);
+		var txts:Array<String> = StringUtil.splitStringByNewlines(text);
 
 		return txts;
 	}
