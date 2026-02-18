@@ -5,6 +5,7 @@ import haxe.PosInfos;
 using StringTools;
 using macohi.funkin.vslice.util.AnsiUtil;
 using macohi.util.ArrayUtil;
+using macohi.util.FileUtil;
 
 class CustomTrace
 {
@@ -66,7 +67,7 @@ class CustomTrace
 	}
 
 	public static var logDirectory:String = 'logs/';
-	public static var logTime:Null<Float> = null;
+	public static var logTime:Null<Dynamic> = null;
 
 	public static dynamic function newTrace(v:Dynamic, ?pos:PosInfos)
 	{
@@ -83,7 +84,7 @@ class CustomTrace
 
 		if (logTime == null)
 		{
-			logTime = Date.now().getTime();
+			logTime = Date.now().toString().fixPath();
 			Sys.println('Log file name: ${logTime}.txt');
 		}
 
