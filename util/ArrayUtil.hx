@@ -1,6 +1,5 @@
 package macohi.util;
 
-import macohi.funkin.vslice.util.AnsiUtil.AnsiCode;
 import macohi.funkin.vslice.util.AnsiUtil;
 
 using StringTools;
@@ -18,7 +17,7 @@ class ArrayUtil
 		for (str in strArray)
 		{
 			if (!str.isBlankStr())
-				strNL += AnsiUtil.stripCodes(str).trim();
+				strNL += AnsiUtil.REGEX_ANSI_CODES.replace(str, '').trim();
 
 			strNL += '\n';
 		}

@@ -106,21 +106,16 @@ enum abstract AnsiCode(String) from String to String
 class AnsiUtil
 {
 	#if sys
-	@:noCompletion
-	static final REGEX_TEAMCITY_VERSION:EReg = ~/^9\.(0*[1-9]\d*)\.|\d{2,}\./;
+	public static final REGEX_TEAMCITY_VERSION:EReg = ~/^9\.(0*[1-9]\d*)\.|\d{2,}\./;
 
-	@:noCompletion
-	static final REGEX_TERM_256:EReg = ~/(?i)-256(color)?$/;
+	public static final REGEX_TERM_256:EReg = ~/(?i)-256(color)?$/;
 
-	@:noCompletion
-	static final REGEX_TERM_TYPES:EReg = ~/(?i)^screen|^xterm|^vt100|^vt220|^rxvt|color|ansi|cygwin|linux/;
+	public static final REGEX_TERM_TYPES:EReg = ~/(?i)^screen|^xterm|^vt100|^vt220|^rxvt|color|ansi|cygwin|linux/;
 	#end
 
-	@:noCompletion
-	static final REGEX_ANSI_CODES:EReg = ~/\x1b\[[0-9;]*m/g;
+	public static final REGEX_ANSI_CODES:EReg = ~/\x1b\[[0-9;]*m/g;
 
-	@:noCompletion
-	static var codesSupported:Null<Bool> = null;
+	public static var codesSupported:Null<Bool> = null;
 
 	/**
 	 * Safe wrapper for Sys.getEnv (returns null on non-sys targets).
