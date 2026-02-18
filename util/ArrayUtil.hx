@@ -1,5 +1,6 @@
 package macohi.util;
 
+using StringTools;
 using macohi.util.StringUtil;
 
 class ArrayUtil
@@ -14,7 +15,7 @@ class ArrayUtil
 		for (str in strArray)
 		{
 			if (!str.isBlankStr())
-				strNL += str;
+				strNL += str.trim();
 
 			strNL += '\n';
 		}
