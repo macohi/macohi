@@ -38,22 +38,20 @@ class MusicManager extends FlxBasic
 
 		if (!FlxG.sound.music?.playing || FlxG.sound.music == null)
 		{
+			var rtp = getRandomTrackPath();
+
+			if (rtp == null)
+				return;
+
 			if (lastAttemptTime != null)
 				if (Date.now().getTime() - lastAttemptTime.getTime() < secondsUntilCanPlayMusicAgain.convert_s_to_ms())
 					return;
 
-			trace('Valid Music Attempt');
+			trace('Valid Music Attempt : $rtp');
 			lastAttemptTime = Date.now();
 
 			if (FlxG.random.bool(MUSIC_FREQUENCY))
-			{
-				var rtp = getRandomTrackPath();
-
-				if (rtp == null)
-					return;
-
 				FlxG.sound.playMusic(rtp, 1);
-			}
 		}
 	}
 }
