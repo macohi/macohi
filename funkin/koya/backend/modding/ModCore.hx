@@ -2,6 +2,7 @@ package macohi.funkin.koya.backend.modding;
 
 #if MOD_SUPPORT
 import haxe.Json;
+import macohi.util.WindowUtil;
 #end
 
 class ModCore
@@ -57,7 +58,7 @@ class ModCore
 
 					if (modMeta.api_version < MOD_MIN_API_VERSION)
 					{
-						CoolUtil.alert('"$mod" running on unsupported version',
+						WindowUtil.alert('"$mod" running on unsupported version',
 							'The mod "$mod" is running on an unsupported version : ${modMeta.api_version}\n\n' +
 							'Minimum supported version ${MOD_MIN_API_VERSION}\n' + 'The mod will still be added but if things go wrong don\'t be surprised');
 					}
@@ -69,7 +70,7 @@ class ModCore
 				}
 				catch (e)
 				{
-					CoolUtil.alert('"$mod" metadata JSON Parsing Error', 'Could not parse mod metajson file:\n\n' + 'Error Message: ${e.message}');
+					WindowUtil.alert('"$mod" metadata JSON Parsing Error', 'Could not parse mod metajson file:\n\n' + 'Error Message: ${e.message}');
 					continue;
 				}
 
