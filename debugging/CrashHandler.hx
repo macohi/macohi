@@ -16,6 +16,12 @@ import sys.FileSystem;
 import sys.io.File;
 #end
 
+#if !CRASH_HANDLER
+typedef ErrorEvent = Dynamic;
+#else
+typedef ErrorEvent = UncaughtErrorEvent;
+#end
+
 /**
 	This is to fix the annoying crashes with no
 	response from haxeflixel unless in a debug build
@@ -67,14 +73,18 @@ class CrashHandler
 
 		very cool person for real they don't get enough credit for their work
 	**/
-	#if CRASH_HANDLER
-	public static function onCrash(e:UncaughtErrorEvent):Void
+	public static function onCrash(e:ErrorEvent):Void
 	{
 		var errMsg:String = "";
 		var path:String = './$FILE_LOCATION';
-		var callStack:Array<StackItem> = CallStack.exceptionStack(true);
-		var dateNow:String = Date.now().toString();
 
+		#if CRASH_HANDLER
+		var callStack:Array<StackItem> = CallStack.exceptionStack(true);
+		#else
+		var callStack:Array<Dynamic> = [];
+		#end
+
+		var dateNow:String = Date.now().toString();
 		dateNow = dateNow.replace(" ", "_");
 		dateNow = dateNow.replace(":", "'");
 
@@ -83,34 +93,46 @@ class CrashHandler
 		#end
 
 		path += '/$FILE_PREFIX$dateNow.txt';
-
 		errMsg += "Uncaught Error: " + e.error + "\n\n";
 
 		for (stackItem in callStack)
 		{
 			switch (stackItem)
 			{
+				#if CRASH_HANDLER
 				case FilePos(s, file, line, column):
 					errMsg += file + ":" + line + " \n";
+				#end
+
 				default:
-					trace(stackItem);
+					errMsg += '${stackItem}\n';
 			}
+		}
+
+		if (CustomTrace.logTime != null)
+		{
+			errMsg += '\n';
+			errMsg += 'Log file: ${CustomTrace.logDirectory}${CustomTrace.logTime}';
+			errMsg += '\n\n';
 		}
 
 		errMsg += "\nPlease report this error to the GitHub page: " + REPORT_PAGE;
 		errMsg += "\n\n> Crash Handler originally written by: sqirra-rng";
 
+		#if sys
 		if (!FileSystem.exists("./" + FILE_LOCATION))
 			FileSystem.createDirectory("./" + FILE_LOCATION);
-
 		File.saveContent(path, errMsg + "\n");
+		#end
 
 		trace('\n\nCRASH:\n');
 		trace(errMsg);
 		trace("Crash dump saved in " + Path.normalize(path));
 
 		WindowUtil.alert("Error!", errMsg);
+
+		#if sys
 		Sys.exit(1);
+		#end
 	}
-	#end
 }
