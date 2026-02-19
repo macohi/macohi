@@ -20,7 +20,10 @@ class KeybindPrompt extends Prompt
 		this.prompt = 'Binding: ' + '“${this.keybind}”' + '\n\nESCAPE TO CANCEL';
 	}
 
-	public static dynamic function keybinds():Array<SaveField<String>> { return []; }
+	public static dynamic function keybinds():Array<SaveField<Array<String>>>
+	{
+		return [];
+	}
 
 	override function handleControls()
 	{
@@ -33,8 +36,9 @@ class KeybindPrompt extends Prompt
 
 		var invalids:Array<FlxKey> = [ESCAPE];
 
-		for (keybind in keybinds())
-			invalids.push(FlxKey.fromString(keybind.get()));
+		for (keybindList in keybinds())
+			for (key in keybindList.get())
+				invalids.push(FlxKey.fromString(key));
 
 		var key:FlxKey = cast FlxG.keys.firstJustReleased();
 
