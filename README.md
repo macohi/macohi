@@ -34,7 +34,7 @@ These are required
 <haxelib name="flixel-ui" />
 <haxelib name="flixel-animate" />
 <haxelib name="newgrounds" if="ENABLE_NEWGROUNDS"/>
-<haxelib name="hxdiscord_rpc" if="ENABLE_DISCORDRPC" />
+<haxelib name="discord_rpc" if="ENABLE_DISCORDRPC" />
 ```
 
 # Other shit

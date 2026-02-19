@@ -16,4 +16,4 @@ haxelib install lime
 
 haxelib install newgrounds
 
-haxelib install hxdiscord_rpc
+haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
