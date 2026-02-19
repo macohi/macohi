@@ -33,15 +33,21 @@ class DiscordClient
 	public static function init()
 	{
 		#if ENABLE_DISCORDRPC
+		if (!hasValidCredentials())
+		{
+			trace(' [DISCORD] Invalid Credentials');
+			return;
+		}
+
+		trace(' [DISCORD] Initalizing Discord Handler');
+
 		handlers = new DiscordEventHandlers();
 
 		handlers.ready = cpp.Function.fromStaticFunction(onReady);
 		handlers.disconnected = cpp.Function.fromStaticFunction(onDisconnected);
 		handlers.errored = cpp.Function.fromStaticFunction(onError);
 
-		if (!hasValidCredentials())
-			return;
-
+		trace(' [DISCORD] Initalizing Discord Client');
 		Discord.Initialize(CLIENT_ID, cpp.RawPointer.addressOf(handlers), false, "");
 
 		createDaemon();
