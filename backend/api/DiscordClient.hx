@@ -11,6 +11,8 @@ import discord_rpc.DiscordRpc;
  */
 class DiscordClient
 {
+	public static var STARTED:Bool = false;
+
 	public static var CLIENT_ID:String = "";
 
 	#if ENABLE_DISCORDRPC
@@ -39,19 +41,22 @@ class DiscordClient
 		#if ENABLE_DISCORDRPC
 		trace('Shutting down...');
 		DiscordRpc.shutdown();
+		STARTED = false;
 		#end
 	}
 
 	#if ENABLE_DISCORDRPC
 	static function onReady():Void
 	{
-		DiscordRpc.presence({
-			details: "Starting Discord RPC",
-			state: null,
-			largeImageKey: '',
-			largeImageText: LARGE_IMAGE_TEXT
-		});
+		flixel.FlxG.resetState();
+		// DiscordRpc.presence({
+		// 	details: "Starting Discord RPC",
+		// 	state: null,
+		// 	largeImageKey: '',
+		// 	largeImageText: LARGE_IMAGE_TEXT
+		// });
 		trace("Discord Client started.");
+		STARTED = true;
 	}
 
 	static function onError(_code:Int, _message:String):Void
@@ -62,6 +67,7 @@ class DiscordClient
 	static function onDisconnected(_code:Int, _message:String):Void
 	{
 		trace('Disconnected! $_code : $_message');
+		STARTED = false;
 	}
 	#end
 
