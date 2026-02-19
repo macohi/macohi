@@ -1,20 +1,20 @@
 package macohi.funkin.koya.frontend.scenes.menustates.options;
 
-import macohi.funkin.pre_vslice.MusicBeatSubstate;
-import flixel.sound.FlxSound;
-import flixel.util.FlxTimer;
-import macohi.funkin.koya.backend.AssetPaths;
-import macohi.funkin.koya.frontend.ui.AtlasText;
-import flixel.tweens.FlxEase;
-import flixel.util.FlxColor;
 import flixel.FlxG;
+import flixel.sound.FlxSound;
+import flixel.text.FlxText;
+import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import flixel.util.FlxColor;
+import flixel.util.FlxTimer;
+import macohi.funkin.pre_vslice.MusicBeatSubstate;
 
 using StringTools;
 
+
 class Prompt extends MusicBeatSubstate
 {
-	public var promptText:AtlasText;
+	public var promptText:FlxText;
 	public var bg:FunkinSprite = new FunkinSprite();
 	public var colorShit:FunkinSprite = new FunkinSprite();
 
@@ -44,7 +44,7 @@ class Prompt extends MusicBeatSubstate
 		colorShit.scrollFactor.set();
 		add(colorShit);
 
-		promptText = new AtlasText(10, 10, prompt, BOLD);
+		promptText = new FlxText(10, 10, colorShit.width, prompt, 16);
 		promptText.screenCenter();
 		add(promptText);
 
