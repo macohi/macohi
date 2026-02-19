@@ -62,7 +62,7 @@ class DiscordClient
 	public static var LARGE_IMAGE_TEXT:String = '';
 
 	#if ENABLE_DISCORDRPC
-	var daemon:Null<Thread> = null;
+	static var daemon:Null<Thread> = null;
 
 	static function createDaemon():Void
 	{
