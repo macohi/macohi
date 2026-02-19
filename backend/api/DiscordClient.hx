@@ -3,6 +3,7 @@ package macohi.backend.api;
 #if ENABLE_DISCORDRPC
 import hxdiscord_rpc.Discord;
 import hxdiscord_rpc.Types;
+import sys.thread.Thread;
 #end
 
 using macohi.util.StringUtil;
@@ -57,6 +58,13 @@ class DiscordClient
 	public static var LARGE_IMAGE_TEXT:String = '';
 
 	#if ENABLE_DISCORDRPC
+	var daemon:Null<Thread> = null;
+
+	function createDaemon():Void
+	{
+		daemon = Thread.create(doDaemonWork);
+	}
+
 	public function setPresence(params:DiscordClientPresenceParams, ?postMakePresense:DiscordRichPresence->Void):Void
 	{
 		var presence:DiscordRichPresence = new DiscordRichPresence();
@@ -104,13 +112,6 @@ class DiscordClient
 		// presence.buttons[1] = button2;
 
 		Discord.UpdatePresence(cpp.RawConstPointer.addressOf(presence));
-	}
-
-	var daemon:Null<Thread> = null;
-
-	function createDaemon():Void
-	{
-		daemon = Thread.create(doDaemonWork);
 	}
 
 	function doDaemonWork():Void
