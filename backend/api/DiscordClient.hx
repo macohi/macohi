@@ -23,7 +23,6 @@ class DiscordClient
 			onError: onError,
 			onDisconnected: onDisconnected
 		});
-		trace("Discord Client started.");
 
 		while (true)
 		{
@@ -52,6 +51,7 @@ class DiscordClient
 			largeImageKey: '',
 			largeImageText: LARGE_IMAGE_TEXT
 		});
+		trace("Discord Client started.");
 	}
 
 	static function onError(_code:Int, _message:String):Void
