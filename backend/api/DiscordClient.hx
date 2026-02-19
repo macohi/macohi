@@ -13,8 +13,6 @@ class DiscordClient
 {
 	public static var CLIENT_ID:String = "";
 
-	static var startTimestamp:Float = Date.now().getTime();
-
 	#if ENABLE_DISCORDRPC
 	public function new():Void
 	{
@@ -78,17 +76,15 @@ class DiscordClient
 		#end
 	}
 
-	public static function changePresence(details:String, state:Null<String>, ?smallImageKey:String, ?hasStartTimestamp:Bool, ?endTimestamp:Float):Void
+	public static function changePresence(details:String, state:Null<String> = null, ?smallImageKey:String, ?largeImageKey:String):Void
 	{
 		#if ENABLE_DISCORDRPC
 		DiscordRpc.presence({
 			details: details,
 			state: state,
-			largeImageKey: '',
+			largeImageKey: largeImageKey,
 			largeImageText: LARGE_IMAGE_TEXT,
 			smallImageKey: smallImageKey,
-			startTimestamp: Std.int(startTimestamp / 1000),
-			endTimestamp: Std.int(startTimestamp + Date.now().getTime() / 1000)
 		});
 		#end
 	}
