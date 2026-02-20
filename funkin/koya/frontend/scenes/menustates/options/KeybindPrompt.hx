@@ -106,6 +106,6 @@ class KeybindPrompt extends Prompt
 		promptText.text = 'Bound key #${keyNum + 1} to “$keyString”';
 
 		keyNum++;
-		pauseTick = 400;
+		pauseTick = 100;
 	}
 }
