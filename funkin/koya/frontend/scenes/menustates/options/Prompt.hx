@@ -40,6 +40,7 @@ class Prompt extends MusicBeatSubstate
 
 		colorShit.makeGraphic(FlxG.width, FlxG.height, FlxColor.fromString('#FF99CC'));
 		colorShit.scale.set(0.9, 0.9);
+		colorShit.updateHitbox();
 		colorShit.alpha = 0;
 		colorShit.scrollFactor.set();
 		add(colorShit);
