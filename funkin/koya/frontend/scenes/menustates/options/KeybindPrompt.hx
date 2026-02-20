@@ -24,8 +24,11 @@ class KeybindPrompt extends Prompt
 
 		this.keybind = keybind;
 
-		keybindField = Reflect.getProperty(Save, keybind);
+		keybindField = Reflect.getProperty(getSave(), keybind);
 	}
+
+	public static dynamic function getSave():Class<Save>
+		return Save;
 
 	override function create()
 	{
