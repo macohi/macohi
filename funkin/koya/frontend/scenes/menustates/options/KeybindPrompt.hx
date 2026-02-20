@@ -60,7 +60,7 @@ class KeybindPrompt extends Prompt
 		return '';
 	}
 
-	public static dynamic function extraControlFunctions(prompt:KeybindPrompt) {}
+	public static dynamic function extraControlFunctions(prompt:KeybindPrompt):Bool { return true; }
 
 	override function handleControls()
 	{
@@ -88,11 +88,13 @@ class KeybindPrompt extends Prompt
 			return;
 		}
 
-		extraControlFunctions(this);
 		if (!FlxG.keys.justPressed.ANY)
 			return;
 		if (keyNum >= maxKeyNum)
 			accept();
+
+		var ecf = extraControlFunctions(this);
+		if (!ecf) return;
 
 		var key:FlxKey = cast FlxG.keys.firstJustPressed();
 
