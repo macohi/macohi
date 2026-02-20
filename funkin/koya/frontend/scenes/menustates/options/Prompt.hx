@@ -45,7 +45,6 @@ class Prompt extends MusicBeatSubstate
 		add(colorShit);
 
 		promptText = new FlxText(colorShit.x, colorShit.y, colorShit.width, prompt, 16);
-		promptText.screenCenter();
 		add(promptText);
 
 		promptText.x += 10;
