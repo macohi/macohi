@@ -55,12 +55,27 @@ class KeybindPrompt extends Prompt
 		return false;
 	}
 
+	public static dynamic function extraControls():String
+	{
+		return '';
+	}
+
+	public static dynamic function extraControlFunctions(prompt:KeybindPrompt)
+	{
+		if (FlxG.keys.justPressed.BACKSPACE)
+		{
+			prompt.promptText.text = 'Removed OG Bind #${prompt.keyNum + 1}';
+			prompt.keybindField.get().remove(prompt.keybindField.get()[prompt.keyNum]);
+			prompt.pauseTick = 100;
+		}
+	}
+
 	override function handleControls()
 	{
 		super.handleControls();
 
 		// your problem
-		invalids = [];
+		invalids = ['BACKSPACE'];
 		for (keybindList in keybinds())
 			for (key in keybindList.get())
 				if (FlxKey.fromString(key) != NONE)
@@ -71,7 +86,7 @@ class KeybindPrompt extends Prompt
 		if (pauseTick < 1)
 			promptText.text = 'Binding: '
 				+ '“${this.keybind}”'
-				+ '\nKey index: ${keyNum + 1}\n\nCurrent Binds: ${getKeybind(keybind, getSave()).get()}\n\nESCAPE TO CANCEL';
+				+ '\nKey index: ${keyNum + 1}\n\nCurrent Binds: ${getKeybind(keybind, getSave()).get()}${extraControls()}';
 		else
 			pauseTick--;
 
@@ -81,6 +96,7 @@ class KeybindPrompt extends Prompt
 			return;
 		}
 
+		extraControlFunctions(this);
 		if (!FlxG.keys.justPressed.ANY)
 			return;
 		if (keyNum >= maxKeyNum)
