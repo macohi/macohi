@@ -44,9 +44,12 @@ class Prompt extends MusicBeatSubstate
 		colorShit.scrollFactor.set();
 		add(colorShit);
 
-		promptText = new FlxText(10, 10, colorShit.width, prompt, 16);
+		promptText = new FlxText(colorShit.x, colorShit.y, colorShit.width, prompt, 16);
 		promptText.screenCenter();
 		add(promptText);
+
+		promptText.x += 10;
+		promptText.y += 10;
 
 		promptText.alpha = 0;
 		promptText.color = FlxColor.WHITE;
