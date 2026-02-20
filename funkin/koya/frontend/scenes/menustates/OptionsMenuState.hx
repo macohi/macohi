@@ -23,7 +23,7 @@ class OptionsMenuState extends MenuState
 	{
 		if (savefield == null) return;
 
-		addItem(savefield.description ?? savefield.display ?? savefield.field, savefield.get(), method);
+		addItem(savefield.display ?? savefield.field, (savefield.description ?? '') + savefield.get(), method);
 	}
 
 	public function addItem(item:String, value:Dynamic, method:Dynamic)
