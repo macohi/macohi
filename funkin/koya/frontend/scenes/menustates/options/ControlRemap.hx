@@ -4,14 +4,12 @@ import flixel.FlxG;
 
 using StringTools;
 
-
 class ControlRemap extends OptionsMenuState
 {
 	public var altMod:Bool = false;
 
 	public function altControls():Bool
 	{
-		
 		// valueText.text += '\n\n( Toggle alts via UI_LEFT or UI_RIGHT )';
 
 		return false;
@@ -30,7 +28,7 @@ class ControlRemap extends OptionsMenuState
 			reloadItems();
 			reloadMenuItems();
 		}
-		
+
 		valueText.y = valueBG.getGraphicMidpoint().y - (valueText.height / 2);
 	}
 
@@ -66,7 +64,7 @@ class ControlRemap extends OptionsMenuState
 				openSubState(new KeybindPrompt(keybind.field, function(confirm:Bool)
 				{
 					reloadItems();
-					// controls.setKeyboardScheme(Custom);
+					extraKeybindPromptStuff();
 				}));
 			});
 		}
@@ -76,4 +74,6 @@ class ControlRemap extends OptionsMenuState
 	{
 		FlxG.switchState(() -> new OptionsMenuState());
 	}
+
+	public function extraKeybindPromptStuff() {}
 }
