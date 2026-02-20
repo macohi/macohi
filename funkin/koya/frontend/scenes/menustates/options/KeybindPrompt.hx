@@ -11,13 +11,27 @@ class KeybindPrompt extends Prompt
 {
 	var keybind:String;
 
+	public var pauseTick:Int = 0;
+
+	public var keyNum:Int = 0;
+	public var maxKeyNum:Int = 2;
+
+	var keybindField:SaveField<Array<String>>;
+
 	override public function new(keybind:String, ?leaveMethod:Bool->Void)
 	{
 		super(leaveMethod);
 
 		this.keybind = keybind;
 
-		this.prompt = 'Binding: ' + '“${this.keybind}”' + '\n\nESCAPE TO CANCEL';
+		keybindField = Reflect.getProperty(Save, keybind);
+		if (keybindField == null)
+		{
+			promptText.text = 'Not allowing binding\n\nKeybind save field not found';
+			deny();
+		}
+
+		maxKeyNum = keybindField.get().length;
 	}
 
 	public static dynamic function keybinds():Array<SaveField<Array<String>>>
@@ -29,10 +43,17 @@ class KeybindPrompt extends Prompt
 	{
 		super.handleControls();
 
+		if (pauseTick < 1)
+			this.prompt = 'Binding: ' + '“${this.keybind}”' + '\nKey number: $keyNum\n\nESCAPE TO CANCEL';
+		else
+			pauseTick--;
+
 		if (!FlxG.keys.justPressed.ESCAPE)
 			return;
 		if (!FlxG.keys.justPressed.ANY)
 			return;
+		if (keyNum >= maxKeyNum)
+			accept();
 
 		var invalids:Array<FlxKey> = [ESCAPE];
 
@@ -45,23 +66,15 @@ class KeybindPrompt extends Prompt
 		if (invalids.contains(key))
 		{
 			promptText.text = 'Not bound\n\nKey already bound';
-			deny();
 			return;
 		}
 
 		var keyString = key.toString();
 
-		var keybindField:SaveField<String> = Reflect.getProperty(Save, keybind);
-		if (keybindField == null)
-		{
-			promptText.text = 'Not bound\n\nKeybind save field not found';
-			deny();
-			return;
-		}
+		keybindField.get()[keyNum] = keyString;
+		promptText.text = 'Bound key #$keyNum to “$keyString”';
 
-		keybindField.set(keyString);
-		promptText.text = 'Bound to “$keyString”';
-
-		accept();
+		keyNum++;
+		pauseTick = 400;
 	}
 }
