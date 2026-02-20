@@ -9,16 +9,16 @@ using StringTools;
 
 class KeybindPrompt extends Prompt
 {
-	var keybind:String;
+	public var keybind:String;
 
 	public var pauseTick:Int = 0;
 
 	public var keyNum:Int = 0;
 	public var maxKeyNum:Int = 2;
 
-	var keybindField:SaveField<Array<String>>;
+	public var keybindField:SaveField<Array<String>>;
 
-	var invalids:Array<String> = [];
+	public var invalids:Array<String> = [];
 
 	override public function new(keybind:String, ?leaveMethod:Bool->Void)
 	{
@@ -60,15 +60,7 @@ class KeybindPrompt extends Prompt
 		return '';
 	}
 
-	public static dynamic function extraControlFunctions(prompt:KeybindPrompt)
-	{
-		if (FlxG.keys.justPressed.BACKSPACE)
-		{
-			prompt.promptText.text = 'Removed OG Bind #${prompt.keyNum + 1}';
-			prompt.keybindField.get().remove(prompt.keybindField.get()[prompt.keyNum]);
-			prompt.pauseTick = 100;
-		}
-	}
+	public static dynamic function extraControlFunctions(prompt:KeybindPrompt) {}
 
 	override function handleControls()
 	{
