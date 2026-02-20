@@ -27,7 +27,7 @@ class KeybindPrompt extends Prompt
 		keybindField = Reflect.getProperty(Save, keybind);
 		if (keybindField == null)
 		{
-			promptText.text = 'Not allowing binding\n\nKeybind save field not found';
+			trace('Not allowing binding\n\nKeybind save field not found');
 			deny();
 		}
 
