@@ -17,4 +17,7 @@ enum abstract Direction(Int) from Int to Int
 		{
 			f(i);
 		}
+
+	public function toInt():Int
+		return this;
 }
