@@ -4,6 +4,7 @@ package macohi.debugging;
 import haxe.Template;
 
 using StringTools;
+using macohi.funkin.vslice.util.AnsiUtil;
 using macohi.util.StringUtil;
 
 #if CRASH_HANDLER
@@ -49,12 +50,12 @@ class CrashHandler
 			'github_repo': GITHUB_REPO,
 		});
 
-		trace('Initalized CrashHandler');
-		trace(' * FILE_PREFIX\t: $FILE_PREFIX');
-		trace(' * REPORT_PAGE\t: $REPORT_PAGE');
-		trace(' * GITHUB_USER\t: $GITHUB_USER');
-		trace(' * GITHUB_REPO\t: $GITHUB_REPO');
-		trace(' * FILE_LOCATION\t: $FILE_LOCATION');
+		trace(' CRASHHANDLER '.bold().bg_blue() + ' Initalized CrashHandler');
+		trace(' CRASHHANDLER '.bold().bg_blue() + '  * FILE_PREFIX\t: $FILE_PREFIX');
+		trace(' CRASHHANDLER '.bold().bg_blue() + '  * REPORT_PAGE\t: $REPORT_PAGE');
+		trace(' CRASHHANDLER '.bold().bg_blue() + '  * GITHUB_USER\t: $GITHUB_USER');
+		trace(' CRASHHANDLER '.bold().bg_blue() + '  * GITHUB_REPO\t: $GITHUB_REPO');
+		trace(' CRASHHANDLER '.bold().bg_blue() + '  * FILE_LOCATION\t: $FILE_LOCATION');
 
 		#if CRASH_HANDLER
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);

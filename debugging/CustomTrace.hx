@@ -53,7 +53,7 @@ class CustomTrace
 			nv = ' : $nv';
 		}
 
-		nv = '${posInfos.bold()}${nv.bold()}';
+		nv = '${posInfos}${nv}';
 
 		if (nv != null)
 		{

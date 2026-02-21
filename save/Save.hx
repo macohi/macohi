@@ -15,7 +15,7 @@ class Save
 
 	function initFields()
 	{
-		trace(' * Initalizing Save fields');
+		trace(' SAVE '.bold().bg_bright_yellow() + '  * Initalizing Save fields');
 		version = new SaveField<Null<Int>>('version', SAVE_VERSION);
 	}
 
@@ -23,7 +23,7 @@ class Save
 
 	public function init(project:String, ?company:String)
 	{
-		trace('Initalizing Save: $project');
+		trace(' SAVE '.bold().bg_bright_yellow() + ' Initalizing Save: $project');
 		FlxG.save.bind(project, company ?? Application.current.meta.get('company'));
 
 		initFields();
@@ -38,7 +38,7 @@ class Save
 				if (toobig.contains(field))
 					continue;
 
-				trace(' * Save.${field} : ${Reflect.field(FlxG.save.data, field)}');
+				trace(' SAVE '.bold().bg_bright_yellow() + '  * Save.${field} : ${Reflect.field(FlxG.save.data, field)}');
 			}
 		});
 
@@ -59,7 +59,7 @@ class Save
 		}
 		else
 		{
-			trace('Upgraded Save to $SAVE_VERSION');
+			trace(' SAVE '.bold().bg_bright_yellow() + ' Upgraded Save to $SAVE_VERSION');
 			if (onComplete != null)
 				onComplete();
 		}

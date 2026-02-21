@@ -5,6 +5,8 @@ import haxe.Json;
 import macohi.util.WindowUtil;
 #end
 
+using macohi.funkin.vslice.util.AnsiUtil;
+
 class ModCore
 {
 	public function new() {}
@@ -81,7 +83,7 @@ class ModCore
 		}
 		#end
 
-		trace('Reloaded with ${allMods.length} mod(s) found');
+		trace(' MODCORE '.bold().bg_bright_cyan() + ' Reloaded with ${allMods.length} mod(s) found');
 		for (mod in allMods)
 		{
 			var meta = modMetadatas.get(mod);
@@ -89,7 +91,7 @@ class ModCore
 			var name = getModName(mod);
 			var version = (meta.mod_version != null) ? ' ${meta.mod_version}' : '';
 
-			trace(' * $name$version for api : ${meta.api_version}');
+			trace(' MODCORE '.bold().bg_bright_cyan() + '  * $name$version for api : ${meta.api_version}');
 		}
 
 		for (mod in enabledMods)
