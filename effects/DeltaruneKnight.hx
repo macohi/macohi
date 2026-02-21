@@ -72,4 +72,27 @@ class DeltaruneKnight
 		});
 		return trails;
 	}
+
+	public static function createYTrailTargetY(sprite:FlxSprite, yTarget:Float, delay:Float, speed:Float, max:Int)
+	{
+		var trails = new FlxSpriteGroup(0, 0, max);
+
+		new FlxTimer().start(delay, function(timer:FlxTimer)
+		{
+			var trail = sprite.clone();
+			trail.setPosition(sprite.x, sprite.y);
+			trail.alpha = 0.7;
+			trails.add(trail);
+
+			FlxTween.tween(trail, {y: yTarget, alpha: 0}, speed, {
+				onComplete: tween ->
+				{
+					trails.remove(trail);
+				}
+			});
+
+			timer.reset(delay);
+		});
+		return trails;
+	}
 }
