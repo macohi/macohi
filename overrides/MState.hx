@@ -36,6 +36,7 @@ class MState extends FlxState
 		super.update(elapsed);
 
 		for (obj in members)
-			obj.active = obj.visible && Reflect.field(obj, 'alpha') ?? 1 > 0;
+			if (obj != null)
+				obj.active = obj.visible ?? false && Reflect.field(obj, 'alpha') ?? 1 > 0;
 	}
 }
