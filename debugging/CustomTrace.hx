@@ -80,6 +80,12 @@ class CustomTrace
 		{
 			sys.FileSystem.createDirectory(logDirectory);
 			Sys.println('Created log directory: $logDirectory');
+		} else {
+			#if CLEAR_LOGS
+			sys.FileSystem.deleteDirectory(logDirectory);
+			sys.FileSystem.createDirectory(logDirectory);
+			Sys.println('Cleared log directory: $logDirectory');
+			#end
 		}
 
 		if (logTime == null)
