@@ -37,7 +37,9 @@ These are required
 <haxelib name="newgrounds" if="ENABLE_NEWGROUNDS"/>
 <haxelib name="discord_rpc" if="ENABLE_DISCORDRPC" />
 
-<haxelib name="polymod" />
+<haxelib name="jsonpath"/>
+<haxelib name="jsonpatch"/>
+<haxelib name="thx.core"/>
 ```
 
 # Other shit

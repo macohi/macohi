@@ -18,5 +18,6 @@ haxelib install newgrounds
 
 haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
 
-haxelib install polymod
-haxelib git thx.core https://github.com/fponticelli/thx.core 2bf2b992e06159510f595554e6b952e47922f128
+haxelib install jsonpath
+haxelib install jsonpatch
+haxelib install thx.core
