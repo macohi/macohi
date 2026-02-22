@@ -1,7 +1,3 @@
-# Macohi (Profile)
-
-Hi lol, this being my profile thing was unintentional lmao
-
 # Macohi (Haxe thing)
 
 Bunch o shit I'll prob use in multiple projects
